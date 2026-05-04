@@ -15,21 +15,21 @@ export default function HomeClient() {
   const slides = [
     {
       bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
-      title: "لوحات اعلانية حديثة",
-      subtitle: "أحدث تقنيات تصنيع لوحات المحلات",
-      highlight: "حديثة"
+      title: "أفضل وكالة لوحات إعلانية بالرياض",
+      subtitle: "تصميم وتنفيذ لوحات المحلات والواجهات باحترافية عالية",
+      highlight: "إعلانية"
     },
     {
       bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg",
-      title: "مع الإلتزام بخدمة ما بعد البيع",
-      subtitle: "ملتزمون بالجودة العالية والنتائج",
-      highlight: ""
+      title: "تصنيع حروف بارزة مضيئة بجودة مضمونة",
+      subtitle: "حروف زنكور، ستانلس ستيل، واكريليك مع ضمان شامل",
+      highlight: "مضيئة"
     },
     {
       bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
-      title: "تصاميم إبداعية مبتكرة",
-      subtitle: "نجسد هويتك التجارية بأفضل صورة",
-      highlight: "مبتكرة"
+      title: "تصاميم إبداعية وتكسية واجهات كلادينج",
+      subtitle: "نجسد هويتك التجارية بأفضل صورة على واجهة محلك",
+      highlight: "كلادينج"
     }
   ];
 
@@ -42,26 +42,7 @@ export default function HomeClient() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "VALUE ADV. AGENCY",
-            "image": "https://valueadvagency.com/logo.png",
-            "@id": "https://valueadvagency.com",
-            "url": "https://valueadvagency.com",
-            "telephone": PHONE_NUMBER,
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "الرياض",
-              "addressCountry": "SA"
-            }
-          })
-        }}
-      />
-
+      <h1 className="sr-only">وكالة فاليو للدعاية والإعلان - أفضل تصنيع لوحات محلات وحروف بارزة مضيئة بالرياض</h1>
       {/* Hero Slider */}
       <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden bg-[#243344]">
         <AnimatePresence mode="wait">
@@ -76,7 +57,7 @@ export default function HomeClient() {
             <div className="absolute inset-0 bg-black/40 z-10" />
             <Image
               src={slides[currentSlide].bg}
-              alt="Hero Background"
+              alt={slides[currentSlide].title}
               fill
               className="object-cover"
               priority
@@ -84,7 +65,7 @@ export default function HomeClient() {
             />
             <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
               <div className="max-w-4xl">
-                <motion.h1 
+                <motion.h2 
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -94,7 +75,7 @@ export default function HomeClient() {
                   {slides[currentSlide].highlight && (
                     <span className="text-[#f4c03b]">{slides[currentSlide].highlight}</span>
                   )}
-                </motion.h1>
+                </motion.h2>
                 <motion.p 
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}

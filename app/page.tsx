@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import HomeClient from '@/components/HomeClient';
 
 export const metadata: Metadata = {
-  title: 'لوحات إعلانية الرياض | حروف بارزة مضيئة | وكالة فاليو للدعاية',
-  description: 'وكالة فاليو للدعاية والإعلان بالرياض – متخصصون في تصميم وتصنيع وتركيب اللوحات الإعلانية، الحروف البارزة المضيئة أكريليك وزنكور وستانلس ستيل، مع ضمان سنة كاملة. اتصل الآن للحصول على عرض سعر مجاني.',
+  title: 'وكالة فاليو | أرخص وأفضل لوحات محلات وحروف بارزة بالرياض',
+  description: 'أفضل وكالة تصنيع لوحات اعلانية بالرياض. نقوم بتصميم وتركيب حروف بارزة مضيئة، لوحات كلادينج وزينكور بدقة عالية وأسعار منافسة. تواصل معنا لتنفيذ واجهة محلك!',
+  keywords: ['وكالة دعاية واعلان الرياض', 'لوحات محلات الرياض', 'حروف بارزة', 'تصميم لوحات اعلانية', 'واجهات كلادينج', 'مصنع لوحات مضيئة', 'لوحات زنكور', 'حروف اكريليك مضيئة'],
   alternates: {
     canonical: 'https://valueadvagency.com/',
   },
@@ -14,11 +15,21 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "وكالة فاليو للدعاية والإعلان",
-    "image": "https://valueadvagency.com/logo.png",
+    "image": [
+      "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
+      "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg",
+      "https://valueadvagency.com/logo.png"
+    ],
+    "@id": "https://valueadvagency.com",
+    "url": "https://valueadvagency.com",
     "telephone": "+966571449439",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "الرياض",
       "addressLocality": "الرياض",
+      "addressRegion": "الرياض",
+      "postalCode": "11564",
       "addressCountry": "SA"
     },
     "geo": {
@@ -47,6 +58,37 @@ export default function Home() {
         "longitude": 46.6753
       },
       "geoRadius": "50000"
+    },
+    "sameAs": [
+      "https://www.instagram.com/valueadvagency",
+      "https://twitter.com/valueadvagency"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "خدمات اللوحات الإعلانية",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "لوحات حروف بارزة اكريليك"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "تركيب واجهات كلادينج"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "لوحات زنكور وستانلس ستيل"
+          }
+        }
+      ]
     }
   };
 
