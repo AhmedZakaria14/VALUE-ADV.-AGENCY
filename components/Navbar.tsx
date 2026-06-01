@@ -55,7 +55,7 @@ export default function Navbar() {
             >
               <div className="p-6 flex items-center justify-between border-b border-gray-100">
                 <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                  <Image src="/logo.png" alt="VALUE ADV. AGENCY" width={120} height={40} className="h-8 w-auto mix-blend-multiply" />
+                  <Image src="https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png" alt="VALUE ADV. AGENCY" width={120} height={40} className="h-8 w-auto mix-blend-multiply" />
                 </Link>
                 <button 
                   onClick={() => setIsMenuOpen(false)}
@@ -152,7 +152,7 @@ export default function Navbar() {
       {/* NAV */}
       <nav className="sticky top-0 z-[900] h-[74px] px-6 md:px-12 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-gray-300 shadow-sm font-sans">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="VALUE ADV. AGENCY" width={150} height={50} className="h-10 md:h-12 w-auto mix-blend-multiply" />
+          <Image src="https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png" alt="VALUE ADV. AGENCY" width={150} height={50} className="h-10 md:h-12 w-auto mix-blend-multiply" />
         </Link>
         <ul className="hidden md:flex items-center gap-1">
           <li><Link href="/" className="text-[#243344] hover:text-[#e22a32] px-4 py-2 rounded text-[15px] font-bold transition-colors">الرئيسية</Link></li>

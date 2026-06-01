@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     canonical: 'https://valueadvagency.com/',
   },
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png',
+    apple: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png',
   },
   openGraph: {
     title: 'وكالة فاليو للدعاية والإعلان | خبراء اللوحات الإعلانية بالرياض',
