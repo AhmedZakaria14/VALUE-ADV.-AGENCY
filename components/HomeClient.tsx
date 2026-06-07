@@ -15,7 +15,7 @@ export default function HomeClient() {
   const slides = [
     {
       bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
-      title: "أفضل وكالة لوحات إعلانية بالرياض",
+      title: "أفضل وكالة لوحات إعلانية في الرياض",
       subtitle: "تصميم وتنفيذ لوحات المحلات والواجهات باحترافية عالية",
       highlight: "إعلانية"
     },
@@ -71,9 +71,14 @@ export default function HomeClient() {
                   transition={{ delay: 0.3 }}
                   className="font-heading text-5xl md:text-7xl text-white mb-6 leading-tight"
                 >
-                  {slides[currentSlide].title.replace(slides[currentSlide].highlight, '')}
-                  {slides[currentSlide].highlight && (
-                    <span className="text-[#f4c03b]">{slides[currentSlide].highlight}</span>
+                  {slides[currentSlide].highlight && slides[currentSlide].title.includes(slides[currentSlide].highlight) ? (
+                    <>
+                      {slides[currentSlide].title.split(slides[currentSlide].highlight)[0]}
+                      <span className="text-[#f4c03b]">{slides[currentSlide].highlight}</span>
+                      {slides[currentSlide].title.split(slides[currentSlide].highlight)[1]}
+                    </>
+                  ) : (
+                    slides[currentSlide].title
                   )}
                 </motion.h2>
                 <motion.p 
