@@ -121,6 +121,14 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <head>
         <meta name="google-site-verification" content="Iu_xHTNAlQZ5EKlJljDGI2w-7iQjS01x3OAFVQ5LXsk" />
         <script
+          id="gtm"
+          dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MF8KR9MR');`}}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
