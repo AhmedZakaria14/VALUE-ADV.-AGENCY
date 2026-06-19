@@ -51,12 +51,29 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <span>© {new Date().getFullYear()} وكالة فاليو للدعاية والإعلان – جميع الحقوق محفوظة</span>
-          <div className="flex gap-4">
-            <Link href="#" className="hover:text-white transition-colors">سياسة الخصوصية</Link>
-            <span>|</span>
-            <Link href="#" className="hover:text-white transition-colors">الشروط والأحكام</Link>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-400">
+            <span>© {new Date().getFullYear()} وكالة فاليو للدعاية والإعلان – جميع الحقوق محفوظة</span>
+            <div className="hidden md:block text-gray-600">|</div>
+            <div className="flex gap-4">
+              <Link href="#" className="hover:text-white transition-colors">سياسة الخصوصية</Link>
+              <span>-</span>
+              <Link href="#" className="hover:text-white transition-colors">الشروط والأحكام</Link>
+            </div>
+          </div>
+          
+          <div className="flex items-center text-sm text-gray-400 bg-white/5 py-2 px-4 rounded-full border border-white/5 shadow-inner">
+            <span className="ml-2">تم التصميم والتطوير بواسطة</span>
+            <a 
+              href="https://NasharHub.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group relative inline-flex items-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f4c03b] to-[#e22a32] hover:to-[#f4c03b] hover:from-[#e22a32] transition-all duration-500"
+              style={{ paddingBottom: '2px' }}
+            >
+              NasharHub.com
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#f4c03b] to-[#e22a32] transition-all duration-300 group-hover:w-full"></span>
+            </a>
           </div>
         </div>
       </div>
