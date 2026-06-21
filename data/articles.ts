@@ -1,6 +1,9 @@
 import { BlogPost } from '@/types/blog';
+import { seoArticles } from './seoArticles';
+import { seoArticles2 } from './seoArticles2';
+import { seoArticles3 } from './seoArticles3';
 
-export const articles: BlogPost[] = [
+const internalArticles: BlogPost[] = [
   {
     slug: 'role-of-advertising-in-brand-success',
     title: 'دور الدعاية والاعلان في ترسيخ العلامة التجارية ونجاحها',
@@ -399,5 +402,12 @@ export const articles: BlogPost[] = [
       <p>اجعل محلك يضيء كالنجم في سماء الرياض. <a href="/contact">تواصل مع VALUE ADV. AGENCY الآن (0571449439)</a> لتصميم وتنفيذ لوحة مضيئة بأعلى المواصفات.</p>
     `
   }
+];
+
+export const articles: BlogPost[] = [
+  ...seoArticles,
+  ...seoArticles2,
+  ...seoArticles3,
+  ...internalArticles,
 ];
 

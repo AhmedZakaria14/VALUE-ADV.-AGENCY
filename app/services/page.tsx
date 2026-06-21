@@ -32,23 +32,71 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": services.map((srv, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": {
-                "@type": "Service",
-                "name": srv.title,
-                "description": srv.desc,
-                "provider": {
-                  "@type": "Organization",
-                  "name": "VALUE ADV. AGENCY"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": services.map((srv, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "Service",
+                  "name": srv.title,
+                  "description": srv.desc,
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "VALUE ADV. AGENCY"
+                  }
                 }
-              }
-            }))
-          })
+              }))
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "ما هي أنواع اللوحات الإعلانية المتاحة لديكم؟",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "نقدم تشكيلة واسعة من اللوحات منها الحروف البارزة (أكريليك، زنكور، ستانلس ستيل)، لوحات الفلكس، البنرات، تكسية واجهات الكلادينج، بالإضافة إلى لوحات 3D المضيئة والكانفس."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "ما هو الضمان المقدم على تفصيل وتركيب اللوحات؟",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "نقدم ضماناً شاملاً يتراوح بين سنة إلى 5 سنوات على جودة المواد المستخدمة، مقاومة العوامل الجوية، وثبات إضاءة LED، لضمان حماية استثمارك بأفضل صورة ممكنة."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "كم يستغرق وقت تنفيذ وتركيب لوحة المحل؟",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "تختلف المدة حسب حجم وتعقيد اللوحة، ولكن في المتوسط يستغرق التنفيذ والتركيب من 3 إلى 7 أيام عمل من تاريخ اعتماد التصميم النهائي والمقاسات من قبل العميل."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "هل تقدمون خدمات الصيانة للوحات الإعلانية القديمة؟",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "نعم، نوفر خدمات صيانة متكاملة تشمل إصلاح وتغيير الإضاءة التالفة وتحديثها إلى إضاءة LED موفرة للطاقة، وتجديد واجهات المحلات لتعود لوحتك كأنها جديدة."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "كيف يتم تحديد تكلفة لوحات الحروف البارزة أو الكلادينج؟",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "يتم تحديد التكلفة بناءً على مقاسات الواجهة بالمتر المربع، نوع المواد المستخدمة (كمية ونوع الأكريليك أو الستانلس ستيل)، نوع الإضاءة المختارة، وصعوبة التركيب في موقع المشروع."
+                  }
+                }
+              ]
+            }
+          ])
         }}
       />
       <div className="min-h-screen py-20 px-6 md:px-12 bg-white/80 backdrop-blur-sm">
@@ -75,6 +123,52 @@ export default function ServicesPage() {
                 </Link>
               </div>
             ))}
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-24 max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl text-[#243344] mb-4 font-bold">الأسئلة الشائعة حول خدماتنا</h2>
+              <p className="text-gray-600 font-sans">إجابات على أهم الاستفسارات التقنية حول أنواع اللوحات وضمانات التنفيذ.</p>
+            </div>
+            
+            <div className="space-y-6">
+              {[
+                {
+                  q: "ما هي أنواع اللوحات الإعلانية المتاحة لديكم؟",
+                  a: "نقدم تشكيلة واسعة من اللوحات منها الحروف البارزة (أكريليك، زنكور، ستانلس ستيل)، لوحات الفلكس، البنرات، تكسية واجهات الكلادينج، بالإضافة إلى لوحات 3D المضيئة والكانفس."
+                },
+                {
+                  q: "ما هو الضمان المقدم على تفصيل وتركيب اللوحات؟",
+                  a: "نقدم ضماناً شاملاً يتراوح بين سنة إلى 5 سنوات على جودة المواد المستخدمة، مقاومة العوامل الجوية، وثبات إضاءة LED، لضمان حماية استثمارك بأفضل صورة ممكنة."
+                },
+                {
+                  q: "كم يستغرق وقت تنفيذ وتركيب لوحة المحل؟",
+                  a: "تختلف المدة حسب حجم وتعقيد اللوحة، ولكن في المتوسط يستغرق التنفيذ والتركيب من 3 إلى 7 أيام عمل من تاريخ اعتماد التصميم النهائي والمقاسات من قبل العميل."
+                },
+                {
+                  q: "هل تقدمون خدمات الصيانة للوحات الإعلانية القديمة؟",
+                  a: "نعم، نوفر خدمات صيانة متكاملة تشمل إصلاح وتغيير الإضاءة التالفة وتحديثها إلى إضاءة LED موفرة للطاقة، وتجديد واجهات المحلات لتعود لوحتك كأنها جديدة."
+                },
+                {
+                  q: "كيف يتم تحديد تكلفة لوحات الحروف البارزة أو الكلادينج؟",
+                  a: "يتم تحديد التكلفة بناءً على مقاسات الواجهة بالمتر المربع، نوع المواد المستخدمة (كمية ونوع الأكريليك أو الستانلس ستيل)، نوع الإضاءة المختارة، وصعوبة التركيب في موقع المشروع."
+                }
+              ].map((faq, i) => (
+                <div key={i} className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="font-heading text-lg md:text-xl text-[#243344] font-bold mb-3 flex gap-3 items-start">
+                    <span className="text-[#e22a32]">Q.</span>
+                    {faq.q}
+                  </h3>
+                  <div className="flex gap-3 items-start">
+                    <span className="text-[#e22a32] font-bold mt-1">A.</span>
+                    <p className="font-sans text-gray-600 leading-relaxed md:leading-loose text-base m-0">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

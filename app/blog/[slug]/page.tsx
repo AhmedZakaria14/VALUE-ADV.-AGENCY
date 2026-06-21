@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Tag, ChevronRight, Share2 } from 'lucide-react';
+import { applyInternalLinks } from '@/lib/internal-links';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -70,6 +71,22 @@ export default async function BlogPost({ params }: Props) {
     }
   };
 
+  let faqJsonLd = null;
+  if (article.faq && article.faq.length > 0) {
+    faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": article.faq.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    };
+  }
+
   // Get related articles (just the next 3 for simplicity)
   const relatedArticles = articles.filter(a => a.slug !== article.slug).slice(0, 3);
 
@@ -79,6 +96,12 @@ export default async function BlogPost({ params }: Props) {
         type="application/ld+json" 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} 
       />
+      {faqJsonLd && (
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} 
+        />
+      )}
       
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumbs */}
@@ -92,9 +115,9 @@ export default async function BlogPost({ params }: Props) {
 
         <article className="bg-white rounded-2xl shadow-[0_10px_50px_rgba(36,51,68,0.08)] border border-gray-100 overflow-hidden">
           {/* Article Header */}
-          <header className="p-8 md:p-12 border-b border-gray-100 bg-gray-50/50">
+          <header className="p-6 md:p-12 border-b border-gray-100 bg-gray-50/50">
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6 font-sans">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${article.categoryColor}`}>
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${article.categoryColor || 'bg-gray-100 text-gray-800 border-gray-200'}`}>
                 {article.category}
               </span>
               <div className="flex items-center gap-2">
@@ -123,13 +146,72 @@ export default async function BlogPost({ params }: Props) {
             </div>
           </header>
 
+          {/* Table of Contents */}
+          {article.table_of_contents && article.table_of_contents.length > 0 && (
+            <div className="p-6 md:p-12 pb-0 md:pb-0">
+              <div className="bg-gray-50/80 rounded-2xl p-6 md:p-8 border border-gray-100">
+                <h2 className="font-heading text-xl md:text-2xl text-[#243344] font-bold mb-6 flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#e22a32] shadow-sm">
+                    {/* Just a simple icon or dot */}
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#e22a32]"></div>
+                  </span>
+                  جدول المحتويات:
+                </h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 md:gap-y-4 font-sans text-gray-700">
+                  {article.table_of_contents.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 group py-2 md:py-0">
+                      <span className="text-[#e22a32] font-bold opacity-50 text-sm mt-1">{(index + 1).toString().padStart(2, '0')}</span>
+                      <a href={`#${item.anchor}`} className="hover:text-[#e22a32] transition-colors leading-relaxed group-hover:underline underline-offset-4 decoration-gray-300 group-hover:decoration-[#e22a32] w-full">
+                        {item.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+
           {/* Article Content */}
-          <div className="p-8 md:p-12 prose prose-lg prose-blue max-w-none prose-headings:font-heading prose-headings:text-[#243344] prose-p:text-gray-600 prose-p:font-sans prose-li:text-gray-600 prose-li:font-sans prose-a:text-[#e22a32] hover:prose-a:text-[#243344]">
-            <div dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div 
+            className="p-6 md:p-12 prose md:prose-lg prose-blue max-w-none 
+            prose-headings:font-heading prose-headings:text-[#243344] prose-headings:font-bold 
+            prose-h2:mt-12 md:prose-h2:mt-16 prose-h2:mb-6 md:prose-h2:mb-8 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:-tracking-tight
+            prose-h3:mt-8 md:prose-h3:mt-10 prose-h3:mb-4 md:prose-h3:mb-6 prose-h3:text-xl md:prose-h3:text-2xl
+            prose-p:text-gray-600 prose-p:font-sans prose-p:leading-relaxed md:prose-p:leading-loose prose-p:mb-6 md:prose-p:mb-8
+            prose-li:text-gray-600 prose-li:font-sans prose-li:leading-relaxed md:prose-li:leading-loose 
+            prose-ol:pl-0 prose-ol:pr-6 prose-ul:pl-0 prose-ul:pr-6 prose-marker:font-bold prose-marker:text-[#e22a32]
+            prose-strong:text-[#243344] prose-strong:font-bold 
+            prose-a:text-[#e22a32] prose-a:font-medium prose-a:underline hover:prose-a:text-[#243344] prose-a:underline-offset-4 prose-a:transition-colors
+            scroll-mt-24 text-right" 
+            dir="rtl"
+          >
+            <div dangerouslySetInnerHTML={{ __html: applyInternalLinks(article.content, article.slug) }} />
+            
+            {article.faq && article.faq.length > 0 && (
+              <div className="mt-16 bg-gray-50/80 p-8 md:p-10 rounded-3xl border border-gray-100" id="faq">
+                <h2 className="font-heading text-2xl md:text-3xl text-[#243344] font-bold mb-8 text-center">الأسئلة الشائعة</h2>
+                <div className="space-y-6">
+                  {article.faq.map((item, index) => (
+                    <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h3 className="font-heading text-lg md:text-xl text-[#243344] font-bold mb-3 flex gap-3 items-start">
+                        <span className="text-[#e22a32]">Q.</span>
+                        {item.question}
+                      </h3>
+                      <div className="flex gap-3 items-start">
+                        <span className="text-[#e22a32] font-bold mt-1">A.</span>
+                        <p className="font-sans text-gray-600 leading-relaxed md:leading-loose text-base m-0">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Article Footer */}
-          <footer className="p-8 md:p-12 border-t border-gray-100 bg-gray-50/50">
+          <footer className="p-6 md:p-12 border-t border-gray-100 bg-gray-50/50">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 font-sans">
               <div className="flex flex-wrap gap-2">
                 <span className="text-[#243344] font-bold ml-2">الوسوم:</span>
