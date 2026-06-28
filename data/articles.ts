@@ -2,6 +2,7 @@ import { BlogPost } from '@/types/blog';
 import { seoArticles } from './seoArticles';
 import { seoArticles2 } from './seoArticles2';
 import { seoArticles3 } from './seoArticles3';
+import { seoArticles4 } from './seoArticles4';
 
 const internalArticles: BlogPost[] = [
   {
@@ -408,6 +409,7 @@ export const articles: BlogPost[] = [
   ...seoArticles,
   ...seoArticles2,
   ...seoArticles3,
+  ...seoArticles4,
   ...internalArticles,
 ];
 

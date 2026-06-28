@@ -117,7 +117,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   };
 
   return (
-    <html lang="ar" dir="rtl" className={`${tajawal.variable} ${cairo.variable}`}>
+    <html lang="ar" dir="rtl" className={`${tajawal.variable} ${cairo.variable} scroll-smooth`}>
       <head>
         <meta name="google-site-verification" content="Iu_xHTNAlQZ5EKlJljDGI2w-7iQjS01x3OAFVQ5LXsk" />
         <script

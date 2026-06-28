@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Tag, ChevronRight, Share2 } from 'lucide-react';
 import { applyInternalLinks } from '@/lib/internal-links';
+import ShareButton from '@/components/ShareButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -113,9 +114,9 @@ export default async function BlogPost({ params }: Props) {
           <span className="text-[#243344] font-medium truncate">{article.title}</span>
         </nav>
 
-        <article className="bg-white rounded-2xl shadow-[0_10px_50px_rgba(36,51,68,0.08)] border border-gray-100 overflow-hidden">
+        <article className="bg-white md:rounded-3xl shadow-[0_10px_50px_rgba(36,51,68,0.08)] border-y md:border border-gray-100 overflow-hidden -mx-6 md:mx-0">
           {/* Article Header */}
-          <header className="p-6 md:p-12 border-b border-gray-100 bg-gray-50/50">
+          <header className="p-8 md:p-14 lg:p-16 border-b border-gray-100 bg-gray-50/50">
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6 font-sans">
               <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${article.categoryColor || 'bg-gray-100 text-gray-800 border-gray-200'}`}>
                 {article.category}
@@ -148,7 +149,7 @@ export default async function BlogPost({ params }: Props) {
 
           {/* Table of Contents */}
           {article.table_of_contents && article.table_of_contents.length > 0 && (
-            <div className="p-6 md:p-12 pb-0 md:pb-0">
+            <div className="p-8 md:p-14 lg:p-16 pb-0 md:pb-0 lg:pb-0">
               <div className="bg-gray-50/80 rounded-2xl p-6 md:p-8 border border-gray-100">
                 <h2 className="font-heading text-xl md:text-2xl text-[#243344] font-bold mb-6 flex items-center gap-3">
                   <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#e22a32] shadow-sm">
@@ -173,15 +174,16 @@ export default async function BlogPost({ params }: Props) {
 
           {/* Article Content */}
           <div 
-            className="p-6 md:p-12 prose md:prose-lg prose-blue max-w-none 
+            className="p-8 md:p-14 lg:p-16 prose md:prose-lg prose-blue max-w-none 
             prose-headings:font-heading prose-headings:text-[#243344] prose-headings:font-bold 
             prose-h2:mt-12 md:prose-h2:mt-16 prose-h2:mb-6 md:prose-h2:mb-8 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:-tracking-tight
+            prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-4
             prose-h3:mt-8 md:prose-h3:mt-10 prose-h3:mb-4 md:prose-h3:mb-6 prose-h3:text-xl md:prose-h3:text-2xl
-            prose-p:text-gray-600 prose-p:font-sans prose-p:leading-relaxed md:prose-p:leading-loose prose-p:mb-6 md:prose-p:mb-8
-            prose-li:text-gray-600 prose-li:font-sans prose-li:leading-relaxed md:prose-li:leading-loose 
+            prose-p:text-gray-700 prose-p:font-sans prose-p:leading-[2] md:prose-p:leading-[2.2] prose-p:mb-6 md:prose-p:mb-8 prose-p:text-[17px] md:prose-p:text-[19px]
+            prose-li:text-gray-700 prose-li:font-sans prose-li:leading-[2] md:prose-li:leading-[2.2] prose-li:text-[17px] md:prose-li:text-[19px]
             prose-ol:pl-0 prose-ol:pr-6 prose-ul:pl-0 prose-ul:pr-6 prose-marker:font-bold prose-marker:text-[#e22a32]
-            prose-strong:text-[#243344] prose-strong:font-bold 
-            prose-a:text-[#e22a32] prose-a:font-medium prose-a:underline hover:prose-a:text-[#243344] prose-a:underline-offset-4 prose-a:transition-colors
+            prose-strong:text-[#243344] prose-strong:font-bold prose-strong:bg-gray-50 prose-strong:px-1 prose-strong:rounded
+            prose-a:text-[#e22a32] prose-a:font-bold prose-a:underline hover:prose-a:text-[#243344] prose-a:underline-offset-[6px] prose-a:decoration-1 prose-a:decoration-[#e22a32]/40 hover:prose-a:decoration-[#243344] prose-a:transition-all
             scroll-mt-24 text-right" 
             dir="rtl"
           >
@@ -211,7 +213,7 @@ export default async function BlogPost({ params }: Props) {
           </div>
 
           {/* Article Footer */}
-          <footer className="p-6 md:p-12 border-t border-gray-100 bg-gray-50/50">
+          <footer className="p-8 md:p-14 lg:p-16 border-t border-gray-100 bg-gray-50/50">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 font-sans">
               <div className="flex flex-wrap gap-2">
                 <span className="text-[#243344] font-bold ml-2">الوسوم:</span>
@@ -222,10 +224,11 @@ export default async function BlogPost({ params }: Props) {
                 ))}
               </div>
               
-              <button className="flex items-center gap-2 text-gray-600 hover:text-[#e22a32] transition-colors font-medium bg-white border border-gray-200 px-4 py-2 rounded-lg shadow-sm">
-                <Share2 className="w-4 h-4" />
-                مشاركة المقال
-              </button>
+              <ShareButton 
+                title={article.title} 
+                text={article.excerpt || article.metaDescription} 
+                url={`/blog/${article.slug}`} 
+              />
             </div>
           </footer>
         </article>
