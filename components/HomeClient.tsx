@@ -14,19 +14,19 @@ export default function HomeClient() {
   
   const slides = [
     {
-      bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
+      bg: "/images/whatsapp-51.jpeg",
       title: "أفضل وكالة لوحات إعلانية في الرياض",
       subtitle: "تصميم وتنفيذ لوحات المحلات والواجهات باحترافية عالية",
       highlight: "إعلانية"
     },
     {
-      bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg",
+      bg: "/images/whatsapp-55.jpeg",
       title: "تصنيع حروف بارزة مضيئة بجودة مضمونة",
       subtitle: "حروف زنكور، ستانلس ستيل، واكريليك مع ضمان شامل",
       highlight: "مضيئة"
     },
     {
-      bg: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
+      bg: "/images/whatsapp-46.jpeg",
       title: "تصاميم إبداعية وتكسية واجهات كلادينج",
       subtitle: "نجسد هويتك التجارية بأفضل صورة على واجهة محلك",
       highlight: "كلادينج"
@@ -61,7 +61,6 @@ export default function HomeClient() {
               fill
               className="object-cover"
               priority
-              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
               <div className="max-w-4xl">
@@ -353,8 +352,14 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { src: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg", alt: "تصميم وتنفيذ لوحات إعلانية حروف بارزة للواجهات" },
-              { src: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg", alt: "تركيب لوحة حرف مضيء واجهة خارجية" }
+              { src: "/images/whatsapp-1.jpeg", alt: "واجهة محل بحروف بارزة مضيئة" },
+              { src: "/images/whatsapp-2.jpeg", alt: "ستيكر وطباعة إعلانية على مركبة" },
+              { src: "/images/whatsapp-16.jpeg", alt: "لوحات محلات مضيئة لواجهات تجارية" },
+              { src: "/images/whatsapp-24.jpeg", alt: "تنفيذ واجهة مشروع وهوية بصرية" },
+              { src: "/images/whatsapp-25.jpeg", alt: "لوحة محل خارجية بحروف بارزة" },
+              { src: "/images/whatsapp-43.jpeg", alt: "تغطية أسوار مشروع بتصميم إعلاني" },
+              { src: "/images/whatsapp-51.jpeg", alt: "حروف وشعار داخلي مضيء للاستقبال" },
+              { src: "/images/whatsapp-55.jpeg", alt: "صندوق إضاءة ولوحة واجهة خارجية" }
             ].map((item, idx) => (
               <div key={idx} className="relative aspect-[4/3] overflow-hidden group rounded">
                 <Image 
@@ -363,7 +368,6 @@ export default function HomeClient() {
                   fill 
                   loading="lazy"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
-                  referrerPolicy="no-referrer" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
