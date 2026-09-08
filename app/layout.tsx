@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     canonical: 'https://valueadvagency.com/',
   },
   icons: {
-    icon: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png',
-    apple: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780306767/logo_uz7nwr.png',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
   openGraph: {
     title: 'وكالة فاليو للدعاية والإعلان | خبراء اللوحات الإعلانية بالرياض',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg',
+        url: '/images/whatsapp-51.jpeg',
         width: 1200,
         height: 630,
         alt: 'وكالة فاليو للدعاية والإعلان - لوحات إعلانية',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'وكالة فاليو للدعاية والإعلان | خبراء اللوحات الإعلانية بالرياض',
     description: 'متخصصون في تصميم وتركيب اللوحات للمحلات التجارية والحروف البارزة والاكريلك بالرياض.',
-    images: ['https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg'],
+    images: ['/images/whatsapp-51.jpeg'],
   },
   robots: {
     index: true,
@@ -82,7 +82,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'وكالة فاليو للدعاية والإعلان',
-    image: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg',
+    image: 'https://valueadvagency.com/images/whatsapp-51.jpeg',
     '@id': 'https://valueadvagency.com',
     url: 'https://valueadvagency.com',
     telephone: '0571449439',
