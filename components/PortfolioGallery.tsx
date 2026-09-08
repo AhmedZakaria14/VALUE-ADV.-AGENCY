@@ -5,18 +5,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 
-const cloudinaryImages = [
-  {
-    src: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
-    alt: "تصميم وتنفيذ لوحات إعلانية حروف بارزة للواجهات"
-  },
-  {
-    src: "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg",
-    alt: "تركيب لوحة حرف مضيء واجهة خارجية"
-  }
-];
-
-const allImages = [...cloudinaryImages];
+const allImages = Array.from({ length: 55 }, (_, i) => ({
+  src: `/images/whatsapp-${i + 1}.jpeg`,
+  alt: `أعمال وكالة فاليو للدعاية والإعلان بالرياض - مشروع ${i + 1}`
+}));
 
 export default function PortfolioGallery() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -117,7 +109,6 @@ export default function PortfolioGallery() {
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
