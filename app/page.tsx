@@ -16,8 +16,8 @@ export default function Home() {
     "@type": "LocalBusiness",
     "name": "وكالة فاليو للدعاية والإعلان",
     "image": [
-      "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817298/whatsapp-51_l6yrga.jpg",
-      "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1777817299/whatsapp-55_b8s60b.jpg",
+      "https://valueadvagency.com/images/whatsapp-51.jpeg",
+      "https://valueadvagency.com/images/whatsapp-55.jpeg",
       "https://valueadvagency.com/logo.png"
     ],
     "@id": "https://valueadvagency.com",
