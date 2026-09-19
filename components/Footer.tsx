@@ -62,17 +62,17 @@ export default function Footer() {
             </div>
           </div>
           
-          <div className="flex items-center text-sm text-gray-400 bg-white/5 py-2 px-4 rounded-full border border-white/5 shadow-inner">
-            <span className="ml-2">تم التصميم والتطوير بواسطة</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg text-gray-300 bg-white/5 py-3 px-4 sm:px-6 rounded-2xl border border-white/10 shadow-inner text-center">
+            <span>تم التصميم والتطوير بواسطة</span>
             <a 
               href="https://NasharHub.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="group relative inline-flex items-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f4c03b] to-[#e22a32] hover:to-[#f4c03b] hover:from-[#e22a32] transition-all duration-500"
-              style={{ paddingBottom: '2px' }}
+              className="group relative inline-flex min-h-10 items-center font-extrabold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#f4c03b] to-[#e22a32] hover:to-[#f4c03b] hover:from-[#e22a32] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f4c03b] focus-visible:ring-offset-4 focus-visible:ring-offset-black rounded"
+              style={{ paddingBottom: '3px' }}
             >
               NasharHub.com
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#f4c03b] to-[#e22a32] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#f4c03b] to-[#e22a32] transition-transform duration-300 origin-left scale-x-75 group-hover:scale-x-100"></span>
             </a>
           </div>
         </div>
